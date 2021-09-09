@@ -28,6 +28,7 @@ class Handler:
         else:
             textbuffer.set_text(result, len(result))
             widthEntry.set_text(result)
+        calc.grab_focus_without_selecting()
 
     '''
     def keyPressEvent(self, widget, event):
@@ -49,6 +50,7 @@ button=builder.get_object("buttonid")
 popover=builder.get_object("popover")
 widthEntry=builder.get_object("widthEntry")
 bar=builder.get_object("levelbar")
+calc=builder.get_object("calc")
 
 box=builder.get_object("box")
 arrow=Gtk.Arrow()

@@ -71,7 +71,7 @@
               </object>
             </child>
             <child type="title">
-              <object class="GtkEntry" id="entryid">
+              <object class="GtkEntry" id="widthEntry">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <signal name="activate" handler="activate" swapped="no"/>
