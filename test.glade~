@@ -164,7 +164,6 @@
             <property name="margin_right">4</property>
             <property name="margin_top">4</property>
             <property name="margin_bottom">4</property>
-            <property name="value">10</property>
             <property name="max_value">100</property>
           </object>
           <packing>

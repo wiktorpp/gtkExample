@@ -27,7 +27,7 @@ class Handler:
             textbuffer.set_text("Error")
         else:
             textbuffer.set_text(result, len(result))
-            entry.set_text(result)
+            widthEntry.set_text(result)
 
     '''
     def keyPressEvent(self, widget, event):
@@ -47,7 +47,7 @@ builder.connect_signals(Handler())
 window = builder.get_object("window1")
 button=builder.get_object("buttonid")
 popover=builder.get_object("popover")
-entry=builder.get_object("entryid")
+widthEntry=builder.get_object("widthEntry")
 bar=builder.get_object("levelbar")
 
 box=builder.get_object("box")
