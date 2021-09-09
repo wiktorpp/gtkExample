@@ -28,6 +28,7 @@ class Handler:
         else:
             textbuffer.set_text(result, len(result))
             widthEntry.set_text(result)
+        calc.set_position(len(result))
         calc.grab_focus_without_selecting()
 
     '''
@@ -62,5 +63,6 @@ window.set_titlebar(
 )
 '''
 window.show_all()
+calc.grab_focus_without_selecting()
 #import pdb; pdb.set_trace()
 Gtk.main()
