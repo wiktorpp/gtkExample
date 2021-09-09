@@ -17,6 +17,7 @@ class Handler:
         except ValueError: pass
 
     def calculate(self, *args):
+        import pdb; pdb.set_trace()
         textbuffer = builder.get_object("calc").get_buffer()
         text = textbuffer.get_text()
         print(text)
@@ -53,15 +54,10 @@ widthEntry=builder.get_object("widthEntry")
 bar=builder.get_object("levelbar")
 calc=builder.get_object("calc")
 
-box=builder.get_object("box")
-arrow=Gtk.Arrow()
-box.add(arrow)
+builder.get_object("box").add(Gtk.Arrow())
 
-'''
-window.set_titlebar(
-    builder.get_object("headerBar")
-)
-'''
+#window.set_titlebar(builder.get_object("headerBar"))
+
 window.show_all()
 calc.grab_focus_without_selecting()
 #import pdb; pdb.set_trace()
