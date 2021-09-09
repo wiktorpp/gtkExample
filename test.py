@@ -9,7 +9,7 @@ class Handler:
         Gtk.main_quit()
 
     def changeBar(self, *args):
-        text = entry.get_text()
+        text = widthEntry.get_text()
         if text == "":
             bar.set_value(0)
         try:
