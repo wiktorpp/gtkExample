@@ -16,10 +16,12 @@ class Handler:
     def onDestroy(self, *args):
         Gtk.main_quit()
 
-    def onButtonPressed(self, button):
-        print(entry.get_text())
+    def changeBar(self, *args):
+        text = entry.get_text()
+        if text == "":
+            bar.set_value(0)
         try:
-            bar.set_value(int(entry.get_text()))
+            bar.set_value(float(text))
         except ValueError: pass
 
     def popoverButtonPressed(self, button):

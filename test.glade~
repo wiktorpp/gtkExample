@@ -2,6 +2,11 @@
 <!-- Generated with glade 3.22.2 -->
 <interface>
   <requires lib="gtk+" version="3.20"/>
+  <object class="GtkImage" id="image1">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">close-symbolic</property>
+  </object>
   <object class="GtkMenu" id="menu1">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -55,14 +60,14 @@
             <property name="show_close_button">True</property>
             <child>
               <object class="GtkButton" id="buttonid">
-                <property name="label">gtk-about</property>
+                <property name="label">exit</property>
                 <property name="name">buttonname</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="use_stock">True</property>
+                <property name="image">image1</property>
                 <property name="always_show_image">True</property>
-                <signal name="clicked" handler="onButtonPressed" swapped="no"/>
+                <signal name="clicked" handler="onDestroy" swapped="no"/>
               </object>
             </child>
             <child type="title">
@@ -70,9 +75,9 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <signal name="activate" handler="activate" swapped="no"/>
-                <signal name="changed" handler="entryChanged" swapped="no"/>
+                <signal name="changed" handler="changeBar" swapped="no"/>
                 <signal name="editing-done" handler="editingDone" swapped="no"/>
-                <signal name="insert-text" handler="entryChanged" swapped="no"/>
+                <signal name="insert-text" handler="changeBar" swapped="no"/>
               </object>
             </child>
             <child>
@@ -115,7 +120,7 @@
                 <property name="margin_top">4</property>
                 <property name="margin_bottom">4</property>
                 <property name="hexpand">True</property>
-                <signal name="activate" handler="enterPressed" swapped="no"/>
+                <signal name="activate" handler="calculate" swapped="no"/>
                 <signal name="button-press-event" handler="button-press-event" swapped="no"/>
                 <signal name="changed" handler="changed" swapped="no"/>
                 <signal name="delete-text" handler="delete-text" swapped="no"/>
@@ -129,7 +134,7 @@
             </child>
             <child>
               <object class="GtkButton">
-                <property name="label" translatable="yes">button</property>
+                <property name="label" translatable="yes">calculate</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -137,7 +142,7 @@
                 <property name="margin_right">4</property>
                 <property name="margin_top">4</property>
                 <property name="margin_bottom">4</property>
-                <signal name="clicked" handler="test" swapped="no"/>
+                <signal name="clicked" handler="calculate" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -149,17 +154,6 @@
             <property name="expand">False</property>
             <property name="fill">True</property>
             <property name="position">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkTextView">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">2</property>
           </packing>
         </child>
         <child>
@@ -177,18 +171,6 @@
             <property name="expand">False</property>
             <property name="fill">True</property>
             <property name="position">3</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkImage">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="icon_name">ac-adapter-symbolic</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">4</property>
           </packing>
         </child>
       </object>
