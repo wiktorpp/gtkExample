@@ -5,14 +5,6 @@ from gi.repository import Gtk, Gdk
 import numexpr
 
 class Handler:
-    def __init__(self):
-        '''
-        self.set_titlebar(
-            builder.get_object("levelbar")
-        )
-        '''
-        pass
-
     def onDestroy(self, *args):
         Gtk.main_quit()
 
@@ -23,10 +15,6 @@ class Handler:
         try:
             bar.set_value(float(text))
         except ValueError: pass
-
-    def popoverButtonPressed(self, button):
-        print(1)
-        popover.popup()
 
     def calculate(self, *args):
         textbuffer = builder.get_object("calc").get_buffer()
@@ -39,6 +27,7 @@ class Handler:
             textbuffer.set_text("Error")
         else:
             textbuffer.set_text(result, len(result))
+            entry.set_text(result)
 
     '''
     def keyPressEvent(self, widget, event):
