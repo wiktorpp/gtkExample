@@ -5,6 +5,10 @@ from gi.repository import Gtk, Gdk
 import numexpr
 
 class Handler:
+    def __init__(self):
+        #self.queue_draw()
+        pass
+
     def onDestroy(self, *args):
         Gtk.main_quit()
 
@@ -14,6 +18,7 @@ class Handler:
             bar.set_value(0)
         try:
             bar.set_value(float(text))
+            setStars(float(text))
         except ValueError: pass
 
     def calculate(self, *args):
@@ -56,9 +61,24 @@ calc=builder.get_object("calc")
 
 builder.get_object("box").add(Gtk.Arrow())
 
-#window.set_titlebar(builder.get_object("headerBar"))
+window.set_titlebar(builder.get_object("headerBar"))
 
+stars = []
+for i in range(1,6):
+    stars.append(builder.get_object("star" + str(i)))
+
+def setStars(num):
+    for i, star in enumerate(stars):
+        if num<i+0.5:
+            star.set_from_icon_name("non-starred-symbolic", Gtk.IconSize.BUTTON)
+        elif num>=i+1:
+            star.set_from_icon_name("starred-symbolic", Gtk.IconSize.BUTTON)
+        else:
+            star.set_from_icon_name("semi-starred-symbolic", Gtk.IconSize.BUTTON)
 window.show_all()
 calc.grab_focus_without_selecting()
 #import pdb; pdb.set_trace()
 Gtk.main()
+
+
+#stars[0].set_from_icon_name("non-starred-symbolic", Gtk.IconSize.BUTTON)

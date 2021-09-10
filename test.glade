@@ -74,6 +74,7 @@
               <object class="GtkEntry" id="widthEntry">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="text" translatable="yes">3.5</property>
                 <signal name="activate" handler="activate" swapped="no"/>
                 <signal name="changed" handler="changeBar" swapped="no"/>
                 <signal name="editing-done" handler="editingDone" swapped="no"/>
@@ -165,6 +166,72 @@
             <property name="margin_top">4</property>
             <property name="margin_bottom">4</property>
             <property name="max_value">100</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkGrid">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkImage" id="star1">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon_name">starred-symbolic</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkImage" id="star2">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon_name">starred-symbolic</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkImage" id="star3">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon_name">starred-symbolic</property>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkImage" id="star4">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon_name">semi-starred-symbolic</property>
+              </object>
+              <packing>
+                <property name="left_attach">3</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkImage" id="star5">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon_name">non-starred-symbolic</property>
+              </object>
+              <packing>
+                <property name="left_attach">4</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
