@@ -16,13 +16,13 @@ class Handler:
         text = widthEntry.get_text()
         if text == "":
             bar.set_value(0)
+            setStars(0)
         try:
             bar.set_value(float(text))
             setStars(float(text))
         except ValueError: pass
 
     def calculate(self, *args):
-        import pdb; pdb.set_trace()
         textbuffer = builder.get_object("calc").get_buffer()
         text = textbuffer.get_text()
         print(text)
@@ -44,6 +44,15 @@ class Handler:
     '''
 
     def __getattr__(self, name, *args):
+        print(name)
+        if name.startswith("star"):
+            print(name)
+            number=name[4:]
+            def onStarPressed(widget, event):
+                if event.button == 1:
+                    widthEntry.set_text(str(int(number)/2))
+            print(onStarPressed)
+            return onStarPressed
         return lambda *args: print({"name": name, "args": args})
 
 builder = Gtk.Builder()
@@ -59,9 +68,10 @@ widthEntry=builder.get_object("widthEntry")
 bar=builder.get_object("levelbar")
 calc=builder.get_object("calc")
 
-builder.get_object("box").add(Gtk.Arrow())
+#builder.get_object("box").add(Gtk.Arrow())
 
-window.set_titlebar(builder.get_object("headerBar"))
+#Uncomment to make window draggable
+#window.set_titlebar(builder.get_object("headerBar"))
 
 stars = []
 for i in range(1,6):
@@ -70,11 +80,11 @@ for i in range(1,6):
 def setStars(num):
     for i, star in enumerate(stars):
         if num<i+0.5:
-            star.set_from_icon_name("non-starred-symbolic", Gtk.IconSize.BUTTON)
+            star.set_from_icon_name("non-starred-symbolic", Gtk.IconSize.LARGE_TOOLBAR)
         elif num>=i+1:
-            star.set_from_icon_name("starred-symbolic", Gtk.IconSize.BUTTON)
+            star.set_from_icon_name("starred-symbolic", Gtk.IconSize.LARGE_TOOLBAR)
         else:
-            star.set_from_icon_name("semi-starred-symbolic", Gtk.IconSize.BUTTON)
+            star.set_from_icon_name("semi-starred-symbolic", Gtk.IconSize.LARGE_TOOLBAR)
 window.show_all()
 calc.grab_focus_without_selecting()
 #import pdb; pdb.set_trace()
