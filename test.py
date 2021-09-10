@@ -44,14 +44,11 @@ class Handler:
     '''
 
     def __getattr__(self, name, *args):
-        print(name)
         if name.startswith("star"):
-            print(name)
             number=name[4:]
             def onStarPressed(widget, event):
                 if event.button == 1:
                     widthEntry.set_text(str(int(number)/2))
-            print(onStarPressed)
             return onStarPressed
         return lambda *args: print({"name": name, "args": args})
 
@@ -80,11 +77,11 @@ for i in range(1,6):
 def setStars(num):
     for i, star in enumerate(stars):
         if num<i+0.5:
-            star.set_from_icon_name("non-starred-symbolic", Gtk.IconSize.LARGE_TOOLBAR)
+            star.set_from_icon_name("non-starred-symbolic", Gtk.IconSize.DIALOG)
         elif num>=i+1:
-            star.set_from_icon_name("starred-symbolic", Gtk.IconSize.LARGE_TOOLBAR)
+            star.set_from_icon_name("starred-symbolic", Gtk.IconSize.DIALOG)
         else:
-            star.set_from_icon_name("semi-starred-symbolic", Gtk.IconSize.LARGE_TOOLBAR)
+            star.set_from_icon_name("semi-starred-symbolic", Gtk.IconSize.DIALOG)
 window.show_all()
 calc.grab_focus_without_selecting()
 #import pdb; pdb.set_trace()
