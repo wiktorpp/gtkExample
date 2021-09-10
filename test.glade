@@ -2,11 +2,6 @@
 <!-- Generated with glade 3.22.2 -->
 <interface>
   <requires lib="gtk+" version="3.20"/>
-  <object class="GtkImage" id="image1">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="icon_name">close-symbolic</property>
-  </object>
   <object class="GtkMenu" id="menu1">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -43,6 +38,7 @@
   </object>
   <object class="GtkWindow" id="window1">
     <property name="can_focus">False</property>
+    <property name="icon_name">accessories-calculator-symbolic</property>
     <property name="decorated">False</property>
     <signal name="destroy" handler="onDestroy" swapped="no"/>
     <child type="titlebar">
@@ -60,14 +56,14 @@
             <property name="show_close_button">True</property>
             <child>
               <object class="GtkButton" id="buttonid">
-                <property name="label">exit</property>
+                <property name="label">gtk-dialog-error</property>
                 <property name="name">buttonname</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="image">image1</property>
+                <property name="use_stock">True</property>
                 <property name="always_show_image">True</property>
-                <signal name="clicked" handler="onDestroy" swapped="no"/>
+                <signal name="clicked" handler="pdb" swapped="no"/>
               </object>
             </child>
             <child type="title">
@@ -125,6 +121,7 @@
                       <object class="GtkEntry" id="calc">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="margin_left">4</property>
                         <property name="margin_top">4</property>
                         <property name="margin_bottom">4</property>
                         <property name="hexpand">True</property>
@@ -146,6 +143,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
+                        <property name="margin_right">4</property>
                         <property name="margin_top">4</property>
                         <property name="margin_bottom">4</property>
                         <signal name="clicked" handler="calculate" swapped="no"/>
@@ -163,12 +161,11 @@
                   </packing>
                 </child>
                 <child>
-                  <placeholder/>
-                </child>
-                <child>
                   <object class="GtkGrid">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="halign">center</property>
+                    <signal name="leave-notify-event" handler="leave" swapped="no"/>
                     <child>
                       <object class="GtkImage" id="star1">
                         <property name="visible">True</property>
@@ -239,6 +236,8 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <signal name="button-press-event" handler="star1" swapped="no"/>
+                        <signal name="enter-notify-event" handler="enter1" swapped="no"/>
+                        <signal name="leave-notify-event" handler="leave" swapped="no"/>
                         <child>
                           <placeholder/>
                         </child>
@@ -254,6 +253,8 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <signal name="button-press-event" handler="star2" swapped="no"/>
+                        <signal name="enter-notify-event" handler="enter2" swapped="no"/>
+                        <signal name="leave-notify-event" handler="leave" swapped="no"/>
                         <child>
                           <placeholder/>
                         </child>
@@ -269,6 +270,8 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <signal name="button-press-event" handler="star3" swapped="no"/>
+                        <signal name="enter-notify-event" handler="enter3" swapped="no"/>
+                        <signal name="leave-notify-event" handler="leave" swapped="no"/>
                         <child>
                           <placeholder/>
                         </child>
@@ -284,6 +287,8 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <signal name="button-press-event" handler="star4" swapped="no"/>
+                        <signal name="enter-notify-event" handler="enter4" swapped="no"/>
+                        <signal name="leave-notify-event" handler="leave" swapped="no"/>
                         <child>
                           <placeholder/>
                         </child>
@@ -299,6 +304,8 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <signal name="button-press-event" handler="star5" swapped="no"/>
+                        <signal name="enter-notify-event" handler="enter5" swapped="no"/>
+                        <signal name="leave-notify-event" handler="leave" swapped="no"/>
                         <child>
                           <placeholder/>
                         </child>
@@ -314,6 +321,8 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <signal name="button-press-event" handler="star6" swapped="no"/>
+                        <signal name="enter-notify-event" handler="enter6" swapped="no"/>
+                        <signal name="leave-notify-event" handler="leave" swapped="no"/>
                         <child>
                           <placeholder/>
                         </child>
@@ -329,6 +338,8 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <signal name="button-press-event" handler="star7" swapped="no"/>
+                        <signal name="enter-notify-event" handler="enter7" swapped="no"/>
+                        <signal name="leave-notify-event" handler="leave" swapped="no"/>
                         <child>
                           <placeholder/>
                         </child>
@@ -344,6 +355,8 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <signal name="button-press-event" handler="star8" swapped="no"/>
+                        <signal name="enter-notify-event" handler="enter8" swapped="no"/>
+                        <signal name="leave-notify-event" handler="leave" swapped="no"/>
                         <child>
                           <placeholder/>
                         </child>
@@ -359,6 +372,8 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <signal name="button-press-event" handler="star9" swapped="no"/>
+                        <signal name="enter-notify-event" handler="enter9" swapped="no"/>
+                        <signal name="leave-notify-event" handler="leave" swapped="no"/>
                         <child>
                           <placeholder/>
                         </child>
@@ -373,7 +388,13 @@
                       <object class="GtkEventBox">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="margin_left">2</property>
+                        <property name="margin_right">2</property>
+                        <property name="margin_top">2</property>
+                        <property name="margin_bottom">2</property>
                         <signal name="button-press-event" handler="star10" swapped="no"/>
+                        <signal name="enter-notify-event" handler="enter10" swapped="no"/>
+                        <signal name="leave-notify-event" handler="leave" swapped="no"/>
                         <child>
                           <placeholder/>
                         </child>
@@ -388,7 +409,7 @@
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">True</property>
-                    <property name="position">2</property>
+                    <property name="position">1</property>
                   </packing>
                 </child>
               </object>
@@ -401,6 +422,8 @@
               <object class="GtkLevelBar" id="levelbar">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="margin_left">4</property>
+                <property name="margin_right">4</property>
                 <property name="margin_top">4</property>
                 <property name="margin_bottom">4</property>
                 <property name="orientation">vertical</property>

@@ -3,11 +3,14 @@ gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gdk
 
 import numexpr
+import pdb
 
 class Handler:
     def __init__(self):
         #self.queue_draw()
         pass
+
+    pdb = lambda self, button: pdb.set_trace()
 
     def onDestroy(self, *args):
         Gtk.main_quit()
@@ -43,6 +46,9 @@ class Handler:
             import pdb; pdb.set_trace()
     '''
 
+    def leave(elf, widget, event):
+        setStars(float(builder.get_object("widthEntry").get_buffer().get_text()))
+
     def __getattr__(self, name, *args):
         if name.startswith("star"):
             number=name[4:]
@@ -50,6 +56,12 @@ class Handler:
                 if event.button == 1:
                     widthEntry.set_text(str(int(number)/2))
             return onStarPressed
+        if name.startswith("enter"):
+            number=name[5:]
+            print(1)
+            def onEnter(widget, event):
+                setStars(int(number)/2)
+            return onEnter
         return lambda *args: print({"name": name, "args": args})
 
 builder = Gtk.Builder()
