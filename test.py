@@ -17,6 +17,7 @@ class Handler:
 
     def changeBar(self, *args):
         text = widthEntry.get_text()
+        bar=builder.get_object("levelbar")
         if text == "":
             bar.set_value(0)
             setStars(0)
@@ -26,7 +27,7 @@ class Handler:
         except ValueError: pass
 
     def calculate(self, *args):
-        textbuffer = builder.get_object("calc").get_buffer()
+        textbuffer = calc.get_buffer()
         text = textbuffer.get_text()
         print(text)
 
@@ -47,7 +48,7 @@ class Handler:
     '''
 
     def leave(elf, widget, event):
-        setStars(float(builder.get_object("widthEntry").get_buffer().get_text()))
+        setStars(float(widthEntry.get_buffer().get_text()))
 
     def __getattr__(self, name, *args):
         if name.startswith("star"):
@@ -56,25 +57,21 @@ class Handler:
                 if event.button == 1:
                     widthEntry.set_text(str(int(number)/2))
             return onStarPressed
+
         if name.startswith("enter"):
             number=name[5:]
-            print(1)
             def onEnter(widget, event):
                 setStars(int(number)/2)
             return onEnter
+
         return lambda *args: print({"name": name, "args": args})
 
 builder = Gtk.Builder()
-filename = "test.glade"
-#filename = input("filename>")
-builder.add_from_file(filename)
+builder.add_from_file("test.glade")
 builder.connect_signals(Handler())
 
-window = builder.get_object("window1")
 button=builder.get_object("buttonid")
-popover=builder.get_object("popover")
 widthEntry=builder.get_object("widthEntry")
-bar=builder.get_object("levelbar")
 calc=builder.get_object("calc")
 
 #builder.get_object("box").add(Gtk.Arrow())
@@ -94,7 +91,7 @@ def setStars(num):
             star.set_from_icon_name("starred-symbolic", Gtk.IconSize.DIALOG)
         else:
             star.set_from_icon_name("semi-starred-symbolic", Gtk.IconSize.DIALOG)
-window.show_all()
+builder.get_object("window1").show_all()
 calc.grab_focus_without_selecting()
 #import pdb; pdb.set_trace()
 Gtk.main()
