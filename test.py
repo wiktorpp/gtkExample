@@ -3,6 +3,7 @@ gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gdk
 
 import numexpr
+import pdb
 
 class Handler:
     def __init__(self):
@@ -51,8 +52,11 @@ class Handler:
             import pdb; pdb.set_trace()
     '''
 
-    def leave(elf, widget, event):
-        setStars(float(widthEntry.get_buffer().get_text()))
+    def leave(self, widget, event):
+        try:
+            setStars(float(widthEntry.get_buffer().get_text()))
+        except ValueError:
+            pass
 
     def __getattr__(self, name, *args):
         if name.startswith("star"):
