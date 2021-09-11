@@ -3,14 +3,14 @@ gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gdk
 
 import numexpr
-import pdb
 
 class Handler:
     def __init__(self):
         #self.queue_draw()
         pass
 
-    pdb = lambda self, button: pdb.set_trace()
+    def pdb(self, button):
+        import pdb; pdb.set_trace()
 
     def onDestroy(self, *args):
         Gtk.main_quit()
@@ -41,6 +41,10 @@ class Handler:
         calc.set_position(len(result))
         calc.grab_focus_without_selecting()
 
+    def shutdown(self, button):
+        import os
+        os.system("pkexec shutdown now")
+
     '''
     def keyPressEvent(self, widget, event):
         if event.keyval == 106:
@@ -70,6 +74,7 @@ builder = Gtk.Builder()
 builder.add_from_file("test.glade")
 builder.connect_signals(Handler())
 
+window = builder.get_object("window1")
 button=builder.get_object("buttonid")
 widthEntry=builder.get_object("widthEntry")
 calc=builder.get_object("calc")
@@ -91,10 +96,8 @@ def setStars(num):
             star.set_from_icon_name("starred-symbolic", Gtk.IconSize.DIALOG)
         else:
             star.set_from_icon_name("semi-starred-symbolic", Gtk.IconSize.DIALOG)
-builder.get_object("window1").show_all()
+            
+window.show_all()
 calc.grab_focus_without_selecting()
 #import pdb; pdb.set_trace()
 Gtk.main()
-
-
-#stars[0].set_from_icon_name("non-starred-symbolic", Gtk.IconSize.BUTTON)
