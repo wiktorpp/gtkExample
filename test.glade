@@ -6,6 +6,22 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
   </object>
+  <object class="GtkPopover" id="popover1">
+    <property name="can_focus">False</property>
+    <child>
+      <object class="GtkButton">
+        <property name="label" translatable="yes">eat a dick</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="margin_left">4</property>
+        <property name="margin_right">4</property>
+        <property name="margin_top">4</property>
+        <property name="margin_bottom">4</property>
+        <signal name="clicked" handler="shutdown" swapped="no"/>
+      </object>
+    </child>
+  </object>
   <object class="GtkPopover" id="popover">
     <property name="can_focus">False</property>
     <child>
@@ -33,13 +49,12 @@
   <object class="GtkWindow" id="window1">
     <property name="can_focus">False</property>
     <property name="icon_name">accessories-calculator-symbolic</property>
-    <property name="decorated">False</property>
     <signal name="destroy" handler="onDestroy" swapped="no"/>
     <child type="titlebar">
       <placeholder/>
     </child>
     <child>
-      <object class="GtkBox">
+      <object class="GtkBox" id="boxtest">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
@@ -430,22 +445,6 @@
             <property name="position">1</property>
           </packing>
         </child>
-      </object>
-    </child>
-  </object>
-  <object class="GtkPopover" id="popover1">
-    <property name="can_focus">False</property>
-    <child>
-      <object class="GtkButton">
-        <property name="label" translatable="yes">eat a dick</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="margin_left">4</property>
-        <property name="margin_right">4</property>
-        <property name="margin_top">4</property>
-        <property name="margin_bottom">4</property>
-        <signal name="clicked" handler="shutdown" swapped="no"/>
       </object>
     </child>
   </object>

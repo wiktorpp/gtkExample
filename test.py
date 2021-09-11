@@ -85,8 +85,10 @@ calc=builder.get_object("calc")
 
 #builder.get_object("box").add(Gtk.Arrow())
 
-#Uncomment to make window draggable
-#window.set_titlebar(builder.get_object("headerBar"))
+hb = builder.get_object("headerBar")
+hb.get_parent().remove(hb)
+#builder.get_object("boxtest").add(hb)
+window.set_titlebar(hb)
 
 stars = []
 for i in range(1,6):
