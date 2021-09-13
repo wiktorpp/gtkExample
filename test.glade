@@ -6,43 +6,17 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
   </object>
-  <object class="GtkPopover" id="popover1">
-    <property name="can_focus">False</property>
-    <child>
-      <object class="GtkButton">
-        <property name="label" translatable="yes">eat a dick</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="margin_left">4</property>
-        <property name="margin_right">4</property>
-        <property name="margin_top">4</property>
-        <property name="margin_bottom">4</property>
-        <signal name="clicked" handler="shutdown" swapped="no"/>
-      </object>
-    </child>
-  </object>
   <object class="GtkPopover" id="popover">
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkMenuButton">
+      <object class="GtkImage" id="image">
+        <property name="name">60</property>
+        <property name="width_request">60</property>
+        <property name="height_request">60</property>
         <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="focus_on_click">False</property>
-        <property name="receives_default">True</property>
-        <property name="margin_left">4</property>
-        <property name="margin_right">4</property>
-        <property name="margin_top">4</property>
-        <property name="margin_bottom">4</property>
-        <property name="direction">left</property>
-        <property name="popover">popover1</property>
-        <child>
-          <object class="GtkLabel">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="label" translatable="yes">fuck you</property>
-          </object>
-        </child>
+        <property name="can_focus">False</property>
+        <property name="vexpand">True</property>
+        <property name="icon_name">image-x-generic</property>
       </object>
     </child>
   </object>
@@ -82,7 +56,6 @@
                 <property name="text" translatable="yes">3.5</property>
                 <signal name="activate" handler="activate" swapped="no"/>
                 <signal name="changed" handler="changeBar" swapped="no"/>
-                <signal name="changed" handler="randomizeImage" swapped="no"/>
                 <signal name="editing-done" handler="editingDone" swapped="no"/>
                 <signal name="insert-text" handler="changeBar" swapped="no"/>
               </object>
@@ -93,7 +66,9 @@
                 <property name="can_focus">True</property>
                 <property name="focus_on_click">False</property>
                 <property name="receives_default">True</property>
+                <property name="use_popover">False</property>
                 <property name="popover">popover</property>
+                <signal name="clicked" handler="randomizeImage" swapped="no"/>
                 <child>
                   <object class="GtkImage">
                     <property name="visible">True</property>
@@ -142,7 +117,6 @@
                         <signal name="activate" handler="calculate" swapped="no"/>
                         <signal name="button-press-event" handler="button-press-event" swapped="no"/>
                         <signal name="changed" handler="changed" swapped="no"/>
-                        <signal name="changed" handler="randomizeImage" swapped="no"/>
                         <signal name="delete-text" handler="delete-text" swapped="no"/>
                         <signal name="editing-done" handler="editing-done" swapped="no"/>
                         <signal name="key-press-event" handler="keyPressEvent" swapped="no"/>
@@ -159,7 +133,6 @@
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
                         <signal name="clicked" handler="calculate" swapped="no"/>
-                        <signal name="clicked" handler="randomizeImage" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
@@ -438,20 +411,6 @@
               </object>
               <packing>
                 <property name="left_attach">0</property>
-                <property name="top_attach">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkImage" id="image">
-                <property name="width_request">86</property>
-                <property name="height_request">86</property>
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="vexpand">True</property>
-                <property name="icon_name">image-x-generic</property>
-              </object>
-              <packing>
-                <property name="left_attach">2</property>
                 <property name="top_attach">0</property>
               </packing>
             </child>

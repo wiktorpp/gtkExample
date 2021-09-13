@@ -70,7 +70,7 @@ class Handler:
         x=bytearray(x)
         import pdb; pdb.set_trace()
         """
-        size=int(image.get_allocated_height()/2)*2
+        size=60
         bitmap=urandom(int(size/2 * size/2 * 3))
         pixbuf=GdkPixbuf.Pixbuf.new_from_bytes(
             data = GLib.Bytes(bitmap), 
