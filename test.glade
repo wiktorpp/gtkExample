@@ -82,6 +82,7 @@
                 <property name="text" translatable="yes">3.5</property>
                 <signal name="activate" handler="activate" swapped="no"/>
                 <signal name="changed" handler="changeBar" swapped="no"/>
+                <signal name="changed" handler="randomizeImage" swapped="no"/>
                 <signal name="editing-done" handler="editingDone" swapped="no"/>
                 <signal name="insert-text" handler="changeBar" swapped="no"/>
               </object>
@@ -141,6 +142,7 @@
                         <signal name="activate" handler="calculate" swapped="no"/>
                         <signal name="button-press-event" handler="button-press-event" swapped="no"/>
                         <signal name="changed" handler="changed" swapped="no"/>
+                        <signal name="changed" handler="randomizeImage" swapped="no"/>
                         <signal name="delete-text" handler="delete-text" swapped="no"/>
                         <signal name="editing-done" handler="editing-done" swapped="no"/>
                         <signal name="key-press-event" handler="keyPressEvent" swapped="no"/>
@@ -157,6 +159,7 @@
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
                         <signal name="clicked" handler="calculate" swapped="no"/>
+                        <signal name="clicked" handler="randomizeImage" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
@@ -435,6 +438,18 @@
               </object>
               <packing>
                 <property name="left_attach">0</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkImage" id="image">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="vexpand">True</property>
+                <property name="stock">gtk-cancel</property>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
                 <property name="top_attach">0</property>
               </packing>
             </child>

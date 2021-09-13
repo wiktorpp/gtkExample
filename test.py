@@ -1,13 +1,18 @@
 import gi
 gi.require_version("Gtk", "3.0")
-from gi.repository import Gtk, Gdk
+from gi.repository import Gtk, Gdk, GdkPixbuf, GLib
 
 import numexpr
 import pdb
+from os import system, urandom
+
+import unittest 
+from unittest.mock import Mock, patch
 
 class Handler:
     def __init__(self):
         #self.queue_draw()
+        #Sself.randomizeImage()
         pass
 
     def pdb(self, button):
@@ -43,8 +48,7 @@ class Handler:
         calc.grab_focus_without_selecting()
 
     def shutdown(self, button):
-        import os
-        os.system("pkexec shutdown now")
+        system("pkexec shutdown now")
 
     '''
     def keyPressEvent(self, widget, event):
@@ -57,6 +61,28 @@ class Handler:
             setStars(float(widthEntry.get_buffer().get_text()))
         except ValueError:
             pass
+
+    def randomizeImage(*args):
+        image = builder.get_object("image")
+        """
+        pixbuf=GdkPixbuf.Pixbuf.new_from_file("icon.png")
+        x=pixbuf.read_pixel_bytes().unref_to_array()
+        x=bytearray(x)
+        import pdb; pdb.set_trace()
+        """
+        size=image.get_allocated_height()
+        bitmap=urandom(size * size * 3)
+        pixbuf=GdkPixbuf.Pixbuf.new_from_bytes(
+            data = GLib.Bytes(bitmap), 
+            colorspace = GdkPixbuf.Colorspace.RGB, 
+            has_alpha = False, 
+            bits_per_sample = 8, 
+            width = size, 
+            height = size, 
+            rowstride = 256
+        )
+        pixbuf = pixbuf.scale_simple(size, size, GdkPixbuf.InterpType.TILES)
+        image.set_from_pixbuf(pixbuf)
 
     def __getattr__(self, name, *args):
         if name.startswith("star"):
@@ -87,7 +113,6 @@ calc=builder.get_object("calc")
 
 hb = builder.get_object("headerBar")
 hb.get_parent().remove(hb)
-#builder.get_object("boxtest").add(hb)
 window.set_titlebar(hb)
 
 stars = []
@@ -102,7 +127,7 @@ def setStars(num):
             star.set_from_icon_name("starred-symbolic", Gtk.IconSize.DIALOG)
         else:
             star.set_from_icon_name("semi-starred-symbolic", Gtk.IconSize.DIALOG)
-            
+
 window.show_all()
 calc.grab_focus_without_selecting()
 #import pdb; pdb.set_trace()
