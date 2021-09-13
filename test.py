@@ -70,16 +70,16 @@ class Handler:
         x=bytearray(x)
         import pdb; pdb.set_trace()
         """
-        size=image.get_allocated_height()
-        bitmap=urandom(size * size * 3)
+        size=int(image.get_allocated_height()/2)*2
+        bitmap=urandom(int(size/2 * size/2 * 3))
         pixbuf=GdkPixbuf.Pixbuf.new_from_bytes(
             data = GLib.Bytes(bitmap), 
             colorspace = GdkPixbuf.Colorspace.RGB, 
             has_alpha = False, 
             bits_per_sample = 8, 
-            width = size, 
-            height = size, 
-            rowstride = 256
+            width = size/2, 
+            height = size/2, 
+            rowstride = size
         )
         pixbuf = pixbuf.scale_simple(size, size, GdkPixbuf.InterpType.TILES)
         image.set_from_pixbuf(pixbuf)
